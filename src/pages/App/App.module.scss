@@ -1,0 +1,21 @@
+.App {
+	font-family: sans-serif;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+.main {
+	font-family: 'Montserrat';
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	border-bottom: 1px solid lightgray;
+	color: rgba(0, 0, 0, 0.658);
+}
+
+:global {
+	.page {
+		background-color: #f7f7f7;
+		box-shadow: inset 5px 0px 15px grey;
+	}
+}
