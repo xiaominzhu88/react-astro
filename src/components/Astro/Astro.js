@@ -2,7 +2,7 @@ import React from 'react';
 import Result from '../Result/Result';
 import styles from './Astro.module.scss';
 import classNames from 'classnames';
-import Lottie from 'react-lottie';
+import { Lottie } from '@crello/react-lottie';
 import animationData from '../../assets/lottie.json';
 
 const defaultOptions = {
@@ -24,40 +24,41 @@ const Astro = ({
 	astro,
 	className,
 }) => {
-	const options = [
-		'aries',
-		'taurus',
-		'gemini',
-		'cancer',
-		'leo',
-		'virgo',
-		'libra',
-		'scorpio',
-		'sagittarius',
-		'capricorn',
-		'aquarius',
-		'pisces',
+	const astroOptions = [
+		'Aries',
+		'Taurus',
+		'Gemini',
+		'Cancer',
+		'Leo',
+		'Virgo',
+		'Libra',
+		'Scorpio',
+		'Sagittarius',
+		'Capricorn',
+		'Aquarius',
+		'Pisces',
 	];
+	const dayOptions = ['Today', 'Tomorrow', 'Yesterday'];
 	return (
 		<div className={classNames(className, styles.astroWrapper)}>
 			<select onChange={(e) => handleSelectAstro(e)} className={styles.select}>
 				select astro
 				<option disabled={astro && true}>select astro</option>
-				{options.map((item) => (
-					<option>{item}</option>
+				{astroOptions.map((item, i) => (
+					<option key={`${i}_${item}`}>{item}</option>
 				))}
 			</select>
 			<select onChange={(e) => handleSelectDay(e)} className={styles.select}>
 				<option disabled={day && true}>select day</option>
-				<option>today</option>
-				<option>yesterday</option>
-				<option>tomorrow</option>
+				{dayOptions.map((item, i) => (
+					<option key={`${i}_${item}`}>{item}</option>
+				))}
 			</select>
 			<button onClick={getData}>GO</button>
 
 			{loading ? (
 				<div className={styles.lottieImage}>
-					<Lottie options={defaultOptions} height={400} width={'100%'} />
+					<Lottie config={defaultOptions} height={400} width={'100%'} />
 				</div>
 			) : (
 				<Result data={data} />

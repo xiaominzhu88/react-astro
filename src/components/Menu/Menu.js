@@ -10,11 +10,12 @@ const Menu = ({ items }) => {
 			<NavHeader />
 			<div className={styles.itemsWrapper}>
 				<MenuItem link={'/astro'} />
-				{items.map((item) => (
+				{items.map((item, i) => (
 					<MenuItem
 						name={item}
 						link={item ? `/${item}` : '/'}
 						className={styles.menuItems}
+						key={`${i}_${item}`}
 					/>
 				))}
 			</div>

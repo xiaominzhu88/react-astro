@@ -25,8 +25,8 @@ const Contact = () => {
 	return (
 		<ul className={styles.contact}>
 			<li>
-				{contactItem.map((item) => (
-					<section>
+				{contactItem.map((item, i) => (
+					<section key={`${i}_${item.content}`}>
 						{item.icon} {item.content}
 					</section>
 				))}

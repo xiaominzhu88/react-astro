@@ -5,7 +5,7 @@ import astro from '../../assets/images/astro.jpg';
 const Header = () => {
 	return (
 		<div className={styles.header}>
-			<div classname={styles.imgWrapper}>
+			<div className={styles.imgWrapper}>
 				<img src={astro} alt="astroLogo" className={styles.logo} />
 			</div>
 			<div />

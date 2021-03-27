@@ -33,7 +33,7 @@ const App = () => {
 		method: 'POST',
 		url: `https://aztro.sameerkumar.website/?sign=${astro}&day=${day}`,
 		headers: {
-			'x-rapidapi-key': '9b2ac43a03msh6d8c651bd763f66p182710jsn29b9b957d540',
+			'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
 			'x-rapidapi-host': 'sameer-kumar-aztro-v1.p.rapidapi.com',
 		},
 	};
@@ -50,6 +50,15 @@ const App = () => {
 		setLoading(false);
 	};
 
+	const astroData = {
+		loading,
+		handleSelectDay,
+		handleSelectAstro,
+		data,
+		getData,
+		day,
+		astro,
+	};
 	return (
 		<Router>
 			<div className="App">
@@ -70,13 +79,7 @@ const App = () => {
 						</Route>
 						<Route path={`/astro`}>
 							<Astro
-								loading={loading}
-								handleSelectDay={handleSelectDay}
-								handleSelectAstro={handleSelectAstro}
-								data={data}
-								getData={getData}
-								day={day}
-								astro={astro}
+								{...astroData}
 								className={classNames(styles.pageWrapper, 'page')}
 							/>
 						</Route>
