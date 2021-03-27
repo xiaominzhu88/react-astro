@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Header.module.scss';
-import astro from '../../images/astro.jpg';
+import astro from '../../assets/images/astro.jpg';
 
 const Header = () => {
 	return (

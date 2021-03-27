@@ -10,7 +10,7 @@ import Others from '../../components/Others/Others';
 
 import styles from './App.module.scss';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
 const App = () => {

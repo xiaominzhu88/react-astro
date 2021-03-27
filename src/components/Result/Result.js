@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './Result.module.scss';
+
 const Result = ({ loading, data }) => {
 	return (
-		<div className={styles.result}>
-			{!loading && (
+		!loading && (
+			<div className={styles.result}>
 				<ul className={styles.resultList}>
 					<li>
 						<span>🗓 </span>Aktuelles Datum: {data.current_date}
@@ -30,8 +31,8 @@ const Result = ({ loading, data }) => {
 						<span>🌱 </span>Beschreibung: {data.description}{' '}
 					</li>
 				</ul>
-			)}
-		</div>
+			</div>
+		)
 	);
 };
 

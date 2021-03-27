@@ -2,3 +2,37 @@
 	text-align: center;
 	padding: 20px;
 }
+button,
+.select {
+	outline: 0;
+	color: #ffffff;
+	background: #5a5c5c;
+	padding: 0.375em 0.75em;
+	line-height: 1.5;
+	border: transparent;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	font-size: 16px;
+	margin-left: 5px;
+
+	&:focus {
+		box-shadow: 0 0 0 0.2em rgba(113, 114, 116, 0.4);
+	}
+
+	&:hover {
+		color: #ffffff;
+		background-color: #85878a;
+	}
+	&:active {
+		color: #ffffff;
+		background-color: #85878a;
+	}
+}
+.select {
+	margin-right: 5px;
+	padding: 8px;
+}
+
+.lottieImage {
+	margin-top: 50px;
+}
