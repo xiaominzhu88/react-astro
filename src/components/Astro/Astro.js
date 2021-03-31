@@ -22,23 +22,10 @@ const Astro = ({
 	getData,
 	day,
 	astro,
+	astroOptions,
+	dayOptions,
 	className,
 }) => {
-	const astroOptions = [
-		'Aries',
-		'Taurus',
-		'Gemini',
-		'Cancer',
-		'Leo',
-		'Virgo',
-		'Libra',
-		'Scorpio',
-		'Sagittarius',
-		'Capricorn',
-		'Aquarius',
-		'Pisces',
-	];
-	const dayOptions = ['Today', 'Tomorrow', 'Yesterday'];
 	return (
 		<div className={classNames(className, styles.astroWrapper)}>
 			<select onChange={(e) => handleSelectAstro(e)} className={styles.select}>

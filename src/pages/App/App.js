@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
 import Astro from '../../components/Astro/Astro';
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
-import Datepicker from '../../components/Datepicker/Datepicker';
+import Month from '../../components/Month/Month';
+import Week from '../../components/Week/Week';
+import Daily from '../../components/Daily/Daily';
 import Home from '../../components/Home/Home';
 import About from '../../components/About/About';
 import Others from '../../components/Others/Others';
-
 import styles from './App.module.scss';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
 const App = () => {
-	const [startDate, setStartDate] = useState(new Date());
 	const [data, setData] = useState({});
 	const [day, setDay] = useState('');
 	const [astro, setAstro] = useState('');
 	const [loading, setLoading] = useState(true);
 
-	const items = ['astro', 'datepicker', 'about', 'others'];
+	const items = ['astro', 'month', 'week', 'daily', 'about', 'others'];
+	const astroOptions = [
+		'Aries',
+		'Taurus',
+		'Gemini',
+		'Cancer',
+		'Leo',
+		'Virgo',
+		'Libra',
+		'Scorpio',
+		'Sagittarius',
+		'Capricorn',
+		'Aquarius',
+		'Pisces',
+	];
+	const dayOptions = ['Today', 'Tomorrow', 'Yesterday'];
 
 	const handleSelectDay = (e) => {
 		setDay(e.target.value);
@@ -58,6 +72,8 @@ const App = () => {
 		getData,
 		day,
 		astro,
+		astroOptions,
+		dayOptions,
 	};
 	return (
 		<Router>
@@ -74,24 +90,32 @@ const App = () => {
 						<Route path={`/about`}>
 							<About className={classNames(styles.pageWrapper, 'page')} />
 						</Route>
-						<Route path={`/others`}>
-							<Others className={classNames(styles.pageWrapper, 'page')} />
-						</Route>
 						<Route path={`/astro`}>
 							<Astro
 								{...astroData}
 								className={classNames(styles.pageWrapper, 'page')}
 							/>
 						</Route>
-						<Route path={`/datepicker`}>
-							<Datepicker
-								showTimeSelect
-								selected={startDate}
-								onChange={(date) => setStartDate(date)}
-								startDate={startDate}
-								setStartDate={setStartDate}
+						<Route path={`/month`}>
+							<Month
+								{...astroData}
 								className={classNames(styles.pageWrapper, 'page')}
 							/>
+						</Route>
+						<Route path={`/week`}>
+							<Week
+								{...astroData}
+								className={classNames(styles.pageWrapper, 'page')}
+							/>
+						</Route>
+						<Route path={`/daily`}>
+							<Daily
+								{...astroData}
+								className={classNames(styles.pageWrapper, 'page')}
+							/>
+						</Route>
+						<Route path={`/others`}>
+							<Others className={classNames(styles.pageWrapper, 'page')} />
 						</Route>
 					</Switch>
 				</div>
