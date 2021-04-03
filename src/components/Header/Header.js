@@ -6,12 +6,15 @@ import Hamburger from '../Hamburger/Hamburger';
 import X from '../Hamburger/X';
 import Menu from '../Menu/Menu';
 import classNames from 'classnames';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = ({ items }) => {
+	const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 	const [click, setClick] = useState(false);
 	const handleClick = () => setClick(!click);
 	const closeMobileMenu = () => setClick(false);
 
+	console.log({ isMobile });
 	return (
 		<div className={styles.header}>
 			<div className={styles.imgWrapper}>
@@ -33,13 +36,15 @@ const Header = ({ items }) => {
 				)}
 			</div>
 
-			<div className={styles.mobileMenu} onClick={handleClick}>
-				{click ? (
-					<X className={styles.menuIcon} />
-				) : (
-					<Hamburger className={styles.menuIcon} />
-				)}
-			</div>
+			{isMobile && (
+				<div className={styles.mobileMenu} onClick={handleClick}>
+					{click ? (
+						<X className={styles.menuIcon} />
+					) : (
+						<Hamburger className={styles.menuIcon} />
+					)}
+				</div>
+			)}
 		</div>
 	);
 };

@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables';
+
+.hamburger {
+	font-size: rem(40px);
+	&:hover,
+	&:active {
+		opacity: 0.6;
+	}
+}

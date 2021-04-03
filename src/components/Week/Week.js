@@ -23,7 +23,7 @@ const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
 				setWeek(response.data.Week);
 			})
 			.catch(function (error) {
-				console.error(error);
+				console.error(error.response.data);
 			});
 	}, [astro]);
 

@@ -6,6 +6,17 @@ span {
 	font-size: 22px;
 	text-transform: uppercase;
 }
-ul {
+.resultList {
+	font-size: 18px;
+	list-style: none;
 	text-align: left;
+	li {
+		margin-bottom: 5px;
+	}
+	span {
+		margin-right: 10px;
+	}
+	@media (max-width: 768px) {
+		padding: 0;
+	}
 }

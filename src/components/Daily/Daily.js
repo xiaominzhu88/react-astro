@@ -52,7 +52,7 @@ const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 					<Separator />
 					<br />
 					<img src={dailyData.Icon} alt="daily" />
-					<ul>
+					<ul className={styles.resultList}>
 						<br />
 						<br />
 						<li>
