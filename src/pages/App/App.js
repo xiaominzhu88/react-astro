@@ -81,10 +81,10 @@ const App = () => {
 	return (
 		<Router>
 			<div className={styles.App}>
-				<Header />
+				<Header items={items} />
 
 				<div className={styles.main}>
-					<Menu items={items} />
+					<Menu items={items} className={styles.resMenu} />
 					<Switch>
 						<Route exact path={'/'}>
 							<Home className={classNames(styles.pageWrapper, 'page')} />

@@ -2,17 +2,7 @@ import React, { useState } from 'react';
 import Result from '../Result/Result';
 import styles from './Astro.module.scss';
 import classNames from 'classnames';
-import { Lottie } from '@crello/react-lottie';
-import animationData from '../../assets/lottie.json';
-
-const defaultOptions = {
-	loop: true,
-	autoplay: true,
-	animationData: animationData,
-	rendererSettings: {
-		preserveAspectRatio: 'xMidYMid slice',
-	},
-};
+import Heart from '../Animations/Heart/Heart';
 
 const Astro = ({
 	loading,
@@ -82,13 +72,7 @@ const Astro = ({
 					GO
 				</button>
 
-				{loading ? (
-					<div className={styles.lottieImage}>
-						<Lottie config={defaultOptions} height={400} width={'100%'} />
-					</div>
-				) : (
-					<Result data={data} />
-				)}
+				{loading ? <Heart /> : <Result data={data} />}
 			</form>
 		</div>
 	);

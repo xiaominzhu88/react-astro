@@ -4,10 +4,19 @@
 	font-family: $font-family;
 }
 .main {
-	display: grid;
-	grid-template-columns: 1fr 3fr;
-	border-bottom: 1px solid $border-color;
-	color: $text-color;
+	@media (min-width: 768px) {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		border-bottom: 1px solid $border-color;
+		color: $text-color;
+	}
+}
+
+.resMenu {
+	display: none;
+	@media (min-width: 768px) {
+		display: block;
+	}
 }
 
 :global {

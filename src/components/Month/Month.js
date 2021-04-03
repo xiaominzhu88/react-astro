@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import styles from './Month.module.scss';
 import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Heart from '../Animations/Heart/Heart';
 
-const Month = ({
-	handleSelectAstro,
-	astro,
-	astroOptions,
-	className,
-	loading,
-}) => {
+const Month = ({ handleSelectAstro, astro, astroOptions, className }) => {
 	const [monthData, setMonthData] = useState('');
 
 	useEffect(() => {
@@ -29,7 +22,7 @@ const Month = ({
 				setMonthData(response.data[`${astro}`]);
 			})
 			.catch(function (error) {
-				console.error(error);
+				console.error(error.response.data);
 			});
 	}, [astro]);
 

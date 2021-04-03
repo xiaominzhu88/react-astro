@@ -16,7 +16,7 @@ const Result = ({ loading, data }) => {
 						<span>☘️ </span>Glückszahl: {data.lucky_number}{' '}
 					</li>
 					<li>
-						<span>⏳</span> Glückszeit:: {data.lucky_time}{' '}
+						<span>⏳</span> Glückszeit: {data.lucky_time}{' '}
 					</li>
 					<li>
 						<span>♦️ </span>Farbe: {data.color}{' '}

@@ -25,7 +25,7 @@ const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 				setToday(response.data.Date);
 			})
 			.catch(function (error) {
-				console.error(error);
+				console.error(error.response.data);
 			});
 	}, [astro]);
 
