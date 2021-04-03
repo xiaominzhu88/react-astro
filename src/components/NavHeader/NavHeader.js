@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const NavHeader = () => {
 	return (
 		<>
-			<Link to="/">
+			<Link to="/video">
 				<div className={styles.navHeader}>
 					<div className={styles.navheaderContent}>
 						<div className={styles.text}>🌗</div>

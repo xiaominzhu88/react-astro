@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap');
+$font-family: 'Montserrat', arial, sans-serif !default;
+
+// Spacing
+/// @type Map
+/// @group Layout
+/// @name spacing
+/// @example margin: 0 space(xxs);
+/// @prop {Spacing} xxs [rem(8px)] - xxs
+/// @prop {Spacing} xs [rem(12px)] - xs
+/// @prop {Spacing} sm [rem(16px)] - sm
+/// @prop {Spacing} default [rem(24px)] - default
+/// @prop {Spacing} md [rem(32px)] - md
+/// @prop {Spacing} lg [rem(40px)] - lg
+/// @prop {Spacing} xl [rem(48px)] - xl
+/// @prop {Spacing} xxl [rem(56px)] - xxl
+
+$space-map: (
+	'xxs': rem(8px),
+	'xs': rem(12px),
+	'sm': rem(16px),
+	'default': rem(24px),
+	'md': rem(32px),
+	'lg': rem(40px),
+	'xl': rem(48px),
+	'xxl': rem(56px),
+) !default;
+
+/// Font size
+/// @group Typography
+/// @name font-size
+/// @example font-size: font-size(xs);
+/// @prop {Fontsize} xs [rem(11px)] - xs
+/// @prop {Fontsize} sm [rem(12px)] - sm
+/// @prop {Fontsize} default [rem(14px)] - default
+/// @prop {Fontsize} md [rem(16px)] - md
+/// @prop {Fontsize} lg [rem(18px)] - lg
+
+$font-sizes: (
+	'xs': rem(11px),
+	'sm': rem(12px),
+	'default': rem(14px),
+	'md': rem(16px),
+	'lg': rem(18px),
+	'xl': rem(24px),
+	'xxl': rem(28px),
+) !default;
+
+///
+/// Line height
+/// @type Map
+/// @group Typography
+/// @name line-height
+/// @example line-height: line-height(xs);
+/// @prop {Lineheight} xs [1.727 ] - xs
+/// @prop {Lineheight} sm [1.667] - sm
+/// @prop {Lineheight} default [1.57] - default
+/// @prop {Lineheight} md [1.5] - md
+/// @prop {Lineheight} lg [1.444] - lg
+
+$line-heights: (
+	'xs': 1.727,
+	'sm': 1.667,
+	'default': 1.57,
+	'md': 1.5,
+	'lg': 1.444,
+) !default;
+
+///
+/// Font weight
+/// @type Map
+/// @group Typography
+/// @name font-weight
+/// @example font-weight: font-weight(light);
+/// @prop {Fontweight} light [200]
+/// @prop {Fontweight} regular [400]
+/// @prop {Fontweight} semi [600]
+/// @prop {Fontweight} bold [700]
+
+$font-weights: (
+	'light': 200,
+	'regular': 400,
+	'semi': 600,
+	'bold': 700,
+) !default;
+
+/// Breakpoints
+/// @type Map
+/// @name breakpoints
+/// @example @include breakpoint-media-up(lg);
+/// @prop {Breakpoint} xs [0]
+/// @prop {Breakpoint} sm [576px]
+/// @prop {Breakpoint} md [768px]
+/// @prop {Breakpoint} lg [992px]
+/// @prop {Breakpoint} xl [1200px]
+/// @prop {Breakpoint} xxl [1600px]
+/// @prop {Breakpoint} xxxl [2600px]
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1600px,
+	xxxl: 2600px,
+) !default;
+
+/// Vertical Breakpoints
+/// @type Map
+/// @name breakpoints
+/// @example @media (min-height: 900px) {}
+/// @prop {Breakpoint} md [0]
+
+$height-breakpoints: (
+	md: 900px,
+) !default;
+
+///
+///
+/// @type Map
+/// @name z-index
+/// @example z-index: z-index(popover);
+/// @param {z-index} base [900]
+/// @param {z-index} dropdown [910]
+/// @param {z-index} fixed [920]
+/// @param {z-index} popover [1010]
+/// @param {z-index} tooltip [1020]
+/// @param {z-index} backdrop [1110]
+/// @param {z-index} modal [1120]
+
+$z-indexes: (
+	'base': 900,
+	'dropdown': 910,
+	'fixed': 920,
+	'popover': 1010,
+	'tooltip': 1020,
+	'backdrop': 1110,
+	'modal': 1120,
+);
+
+//
+/// Box-shadows
+/// @type Map
+/// @name box-shadow
+/// @example box-shadow: box-shadow(shifted);
+/// @prop {Box-shadow} default
+/// @prop {Box-shadow} shifted
+
+$box-shadow-map: (
+	'regular': (
+		0 22px 45px 0 rgba(0, 0, 0, 0.11),
+	),
+	'shifted': (
+		0 15px 30px -10px rgba(0, 0, 0, 0.35),
+	),
+	'navigator': (
+		-2px 2px 6px 0 rgba(0, 0, 0, 0.14),
+	),
+) !default;
+
+//
+/// Container-breakpoints
+/// @type Map
+/// @name container-max-widths
+/// @example container-max-widths: map-get($container-max-widths, xl);
+/// @prop {Container-breakpoints} sm
+/// @prop {Container-breakpoints} md
+/// @prop {Container-breakpoints} lg
+/// @prop {Container-breakpoints} xl
+
+$container-max-widths: (
+	sm: 570px,
+	md: 741px,
+	lg: 912px,
+	xl: 1140px,
+);

@@ -1,0 +1,27 @@
+/// @group Typography
+/// @name font-size
+/// @param { String } $name [default] the name of the font-size
+/// @param { Map } $map [$font-sizes]
+/// @example font-size: font-size(md);
+@function font-size($size: 'default') {
+	@return map-get-try($size, $font-sizes, 'font-size');
+}
+
+/// @group Typography
+/// @name font-weight
+/// @param { String } $name [regular] the name of the font-weight
+/// @param { Map } $map [$font-weights]
+/// @example font-weight: font-weight(md);
+@function font-weight($weight: 'regular') {
+	@return map-get-try($weight, $font-weights, 'font-weight');
+}
+
+/// @group Typography
+/// @name line-height
+/// @param { String } $name [default] the name of the line-height
+/// @param { Map } $map [$line-heights]
+/// @example line-height: line-height(md);
+
+@function line-height($height: 'default') {
+	@return map-get-try($height, $line-heights, 'line-height');
+}

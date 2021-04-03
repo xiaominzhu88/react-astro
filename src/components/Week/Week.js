@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import styles from './Week.module.scss';
 import axios from 'axios';
+import Separator from '../Separator/Separator';
+import Spinner from '../Animations/Spinner/Spinner';
 
 const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
 	const [weekData, setWeekData] = useState('');
@@ -28,7 +29,10 @@ const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
-			<select onChange={(e) => handleSelectAstro(e)} className={styles.select}>
+			<select
+				onChange={(e) => handleSelectAstro(e)}
+				className={classNames(className, 'select')}
+			>
 				select astro
 				<option disabled={astro && true}>select astro</option>
 				{astroOptions.map((item, i) => (
@@ -37,8 +41,12 @@ const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
 			</select>
 			<br />
 			<br />
-			{weekData && (
+			{!weekData ? (
+				<Spinner />
+			) : (
 				<>
+					<Separator />
+					<br />
 					<img src={weekData.Icon} alt="month" />
 					<ul>
 						<br />

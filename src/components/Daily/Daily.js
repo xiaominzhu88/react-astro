@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Daily.module.scss';
 import axios from 'axios';
+import CirclePulse from '../Animations/CirclePulse/CirclePulse';
+import Separator from '../Separator/Separator';
 
 const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 	const [dailyData, setDailyData] = useState('');
@@ -29,7 +31,10 @@ const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
-			<select onChange={(e) => handleSelectAstro(e)} className={styles.select}>
+			<select
+				onChange={(e) => handleSelectAstro(e)}
+				className={classNames(className, 'select')}
+			>
 				select astro
 				<option disabled={astro && true}>select astro</option>
 				{astroOptions.map((item, i) => (
@@ -38,8 +43,14 @@ const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 			</select>
 			<br />
 			<br />
-			{dailyData && (
+			{!dailyData ? (
+				<div className={classNames(styles.circlePulse, 'circlePulse')}>
+					<CirclePulse />
+				</div>
+			) : (
 				<>
+					<Separator />
+					<br />
 					<img src={dailyData.Icon} alt="daily" />
 					<ul>
 						<br />

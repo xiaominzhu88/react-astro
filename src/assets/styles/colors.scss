@@ -1,0 +1,98 @@
+$color-body: #07112a; // color regular text
+$white: #fff !default;
+$black: #000 !default;
+$transparent: transparent !default;
+
+$secondary-green: #062280;
+$light-blue: #e4fafd;
+$shadow: rgba(113, 114, 116, 0.4);
+$orange: #f2ae1d;
+$green: #11f28f;
+$error-red: #f23b1d;
+$gray: #808080;
+$light-gray: #f7f7f7;
+$backdrop: #21252929;
+$disabled-gray: #dbdad5;
+$voucher-orange: #ffb400;
+$border-color: #dfdfdf;
+$text-color: rgba(0, 0, 0, 0.658);
+$select-hover: #85878a;
+
+/// primary color
+/// @type Map
+/// @name colors-primary
+/// @example background-color: color(primary, contrast);
+/// @prop {Color} default [#05d7f2] - default
+/// @prop {Color} contrast [#fff] - contrast
+$colors-primary: (
+	'default': #05d7f2,
+	'light': #e4fafd,
+	'contrast': #fff,
+);
+
+/// secondary color
+/// @type Map
+/// @name colors-secondary
+/// @example background-color: color(secondary, contrast);
+/// @prop {Color} default [#fff] - default
+/// @prop {Color} light [#805ad5;] - light
+/// @prop {Color} contrast [#fff] - contrast
+$colors-secondary: (
+	'default': #fff,
+	'light': #805ad5,
+	'contrast': #fff,
+);
+
+/// tertiary color
+/// @type Map
+/// @name colors-tertiary
+/// @example background-color: color(tertiary, contrast);
+/// @prop {Color} dark [#b3b3b3] - dark
+/// @prop {Color} default [#eeeff1] - default
+/// @prop {Color} light [#dedfe3] - light
+/// @prop {Color} contrast [#07112a] - contrast
+$colors-tertiary: (
+	'dark': #b3b3b3,
+	'default': #eeeff1,
+	'light': #dedfe3,
+	'contrast': $color-body,
+);
+
+/// background color
+/// @type Map
+/// @name colors-background
+/// @example background-color: color(background, contrast);
+/// @prop {Color} default [#f7f8f8] - default
+/// @prop {Color} light [#f5f5f7] - light
+/// @prop {Color} contrast [#07112a] - contrast
+$colors-background: (
+	'default': #f7f8f8,
+	'light': #f5f5f7,
+	'contrast': $color-body,
+);
+
+/// highlight color
+/// @type Map
+/// @name colors-highlight
+/// @example background-color: color(highlight, contrast);
+/// @prop {Color} 100 [#cd0044] - vermillion
+/// @prop {Color} 200 [#258875] - cobalt
+/// @prop {Color} 300 [#d9a300] - mustard
+$colors-highlight: (
+	100: #cd0045,
+	200: #258875,
+	300: #d9a300,
+	'contrast': #fff,
+);
+
+/// this map exists strictly for internal use by the color function
+/// please add and update all color maps you want to have accessible through  `color()`
+/// @type Map
+/// @name colors-palettes
+$color-palettes: (
+	'primary': $colors-primary,
+	'secondary': $colors-secondary,
+	'tertiary': $colors-tertiary,
+	'background': $colors-background,
+	'highlight': $colors-highlight,
+);

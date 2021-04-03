@@ -1,0 +1,40 @@
+.center {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: column;
+}
+
+.heart {
+	font-size: 50px;
+	animation: heart-pulse 3s infinite ease-out;
+}
+.heartOne {
+	font-size: 40px;
+	animation: heart-pulse 2s infinite ease-out;
+}
+
+.heartTwo {
+	font-size: 30px;
+	animation: heart-pulse 1.5s infinite ease-out;
+}
+
+.heartThree {
+	font-size: 20px;
+	animation: heart-pulse 1s infinite ease-out;
+}
+
+@keyframes heart-pulse {
+	0% {
+		transform: scale(0); /* scaling to 0 */
+	}
+	50% {
+		transform: scale(1.2); /* increasing the size */
+	}
+	70% {
+		transform: scale(0.65); /* decreasing the size */
+	}
+	100% {
+		transform: scale(0); /* seeting back to initial size */
+	}
+}

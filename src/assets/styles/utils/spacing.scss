@@ -1,0 +1,9 @@
+/// @group Layout
+/// @name space
+/// @param { String } $name [base] the name of the space
+/// @param { Map } $map [$spaces-map]
+/// @example padding-left: space(md);
+
+@function space($size: 'default', $spaces: $space-map) {
+	@return map-get-try($size, $spaces, 'space');
+}

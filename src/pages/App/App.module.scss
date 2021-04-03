@@ -1,25 +1,51 @@
+@import '../../assets/styles/variables';
+
 .App {
-	font-family: sans-serif;
-	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	padding: 10px;
+	font-family: $font-family;
 }
 .main {
-	font-family: 'Montserrat';
 	display: grid;
 	grid-template-columns: 1fr 3fr;
-	border-bottom: 1px solid lightgray;
-	color: rgba(0, 0, 0, 0.658);
+	border-bottom: 1px solid $border-color;
+	color: $text-color;
 }
 
 :global {
 	.page {
-		background-color: #f7f7f7;
-		box-shadow: inset 5px 0px 15px grey;
+		background-color: $light-gray;
+		box-shadow: inset 5px 0px 15px $shadow;
 	}
 	.dataWrapper {
 		text-align: center;
-		padding: 20px;
+		padding: rem(20px);
+	}
+	.select {
+		outline: 0;
+		color: $light-gray;
+		background: $secondary-green;
+		padding: rem(6px) rem(10px);
+		line-height: 1.5;
+		border: transparent;
+		border-radius: rem(5px);
+		cursor: pointer;
+		font-size: rem(14px);
+		margin-left: rem(5px);
+
+		&:focus {
+			box-shadow: 0 0 0 0.2em $shadow;
+		}
+
+		&:hover {
+			color: $white;
+			background-color: $select-hover;
+		}
+		&:active {
+			color: $white;
+			background-color: $select-hover;
+		}
+	}
+	.spinner,
+	.circlePulse {
+		margin-top: rem(100px);
 	}
 }

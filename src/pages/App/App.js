@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Astro from '../../components/Astro/Astro';
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
+import Video from '../../components/Video/Video';
 import Month from '../../components/Month/Month';
 import Week from '../../components/Week/Week';
 import Daily from '../../components/Daily/Daily';
@@ -52,7 +53,9 @@ const App = () => {
 		},
 	};
 
-	const getData = () => {
+	const getData = (e) => {
+		e.preventDefault();
+
 		axios
 			.request(options)
 			.then(function (response) {
@@ -77,7 +80,7 @@ const App = () => {
 	};
 	return (
 		<Router>
-			<div className="App">
+			<div className={styles.App}>
 				<Header />
 
 				<div className={styles.main}>
@@ -86,6 +89,9 @@ const App = () => {
 						<Route exact path={'/'}>
 							<Home className={classNames(styles.pageWrapper, 'page')} />
 						</Route>
+						<Route exact path={'/video'}>
+							<Video className={classNames(styles.pageWrapper, 'page')} />
+						</Route>
 
 						<Route path={`/about`}>
 							<About className={classNames(styles.pageWrapper, 'page')} />
@@ -93,25 +99,26 @@ const App = () => {
 						<Route path={`/astro`}>
 							<Astro
 								{...astroData}
-								className={classNames(styles.pageWrapper, 'page')}
+								className={classNames(styles.astroWrapper, 'page')}
+								hasSelectButton
 							/>
 						</Route>
 						<Route path={`/month`}>
 							<Month
 								{...astroData}
-								className={classNames(styles.pageWrapper, 'page')}
+								className={classNames(styles.monthWrapper, 'page')}
 							/>
 						</Route>
 						<Route path={`/week`}>
 							<Week
 								{...astroData}
-								className={classNames(styles.pageWrapper, 'page')}
+								className={classNames(styles.weekWrapper, 'page')}
 							/>
 						</Route>
 						<Route path={`/daily`}>
 							<Daily
 								{...astroData}
-								className={classNames(styles.pageWrapper, 'page')}
+								className={classNames(styles.dailyWrapper, 'page')}
 							/>
 						</Route>
 						<Route path={`/others`}>

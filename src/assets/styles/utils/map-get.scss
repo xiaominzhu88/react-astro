@@ -1,0 +1,13 @@
+/// @name map-get-try
+/// @param { String } $key the key to look for in the map
+/// @param { Map } $map the map in which to look for
+/// @param { String } $type the type of value you want to get (used for error message)
+/// @example map-get-try(green, $map-of-apples, apple);
+
+@function map-get-try($key, $map, $type) {
+	@if map-has-key($map, $key) {
+		@return map-get($map, $key);
+	}
+
+	@error 'The specified ' + $type +' "' + $key + '" does not exist! - use one of' + map-keys($map);
+}
