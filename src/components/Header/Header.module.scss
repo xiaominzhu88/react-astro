@@ -3,15 +3,15 @@
 .header {
 	display: flex;
 	align-items: center;
-	padding: 10px;
-	box-shadow: inset 10px 5px 20px grey;
+	padding: rem(10px);
+	box-shadow: inset 10px 5px 20px $gray;
 	justify-content: space-between;
-	background-color: #f7f7f7;
-	margin-bottom: 5px;
+	background-color: $light-gray;
+	margin-bottom: rem(5px);
 }
 .logo {
-	width: 50px;
-	height: 50px;
+	width: rem(50px);
+	height: rem(50px);
 	border-radius: 50%;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .option :hover {
-	color: white;
+	color: $white;
 }
 
 .mobileMenu {
@@ -29,11 +29,11 @@
 
 .navOptions {
 	position: fixed;
-	top: 60px;
-	right: 20px;
+	top: rem(60px);
+	right: rem(20px);
 	background-color: $light-gray;
 	box-shadow: 1px 5px 8px $gray;
-	padding: 10px;
+	padding: rem(10px);
 	width: 200px;
 	transition: all 0.8s ease;
 	height: unset !important;
@@ -44,11 +44,9 @@
 }
 
 .menuIcon {
-	cursor: pointer;
-	width: 45px;
-	height: 45px;
+	width: rem(45px);
+	height: rem(45px);
 }
 .mobileMenu {
 	display: block;
-	cursor: pointer;
 }

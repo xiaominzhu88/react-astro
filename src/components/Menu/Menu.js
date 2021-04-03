@@ -13,7 +13,6 @@ const Menu = ({ items, className, closeMobileMenu }) => {
 		>
 			<NavHeader />
 			<div className={styles.itemsWrapper}>
-				{/* <MenuItem link={'/astro'} /> */}
 				{items.map((item, i) => (
 					<MenuItem
 						name={item}

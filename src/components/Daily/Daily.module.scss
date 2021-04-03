@@ -3,18 +3,18 @@
 span {
 	font-weight: bold;
 	color: slateblue;
-	font-size: 22px;
+	font-size: rem(18px);
 	text-transform: uppercase;
 }
 .resultList {
-	font-size: 18px;
+	font-size: rem(16px);
 	list-style: none;
 	text-align: left;
 	li {
-		margin-bottom: 5px;
+		margin-bottom: rem(5px);
 	}
 	span {
-		margin-right: 10px;
+		margin-right: rem(10px);
 	}
 	@media (max-width: 768px) {
 		padding: 0;
