@@ -11,7 +11,13 @@ import About from '../../components/About/About';
 import Others from '../../components/Others/Others';
 import styles from './App.module.scss';
 import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	useRouteMatch,
+	useParams,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
 const App = () => {
@@ -37,13 +43,6 @@ const App = () => {
 	];
 	const dayOptions = ['Today', 'Tomorrow', 'Yesterday'];
 
-	const handleSelectDay = (e) => {
-		setDay(e.target.value);
-	};
-	const handleSelectAstro = (e) => {
-		setAstro(e.target.value);
-	};
-
 	const options = {
 		method: 'POST',
 		url: `https://aztro.sameerkumar.website/?sign=${astro}&day=${day}`,
@@ -60,11 +59,18 @@ const App = () => {
 			.request(options)
 			.then(function (response) {
 				setData(response.data);
+				setLoading(false);
 			})
 			.catch(function (error) {
 				console.error(error);
 			});
-		setLoading(false);
+	};
+
+	const handleSelectDay = (e) => {
+		setDay(e.target.value);
+	};
+	const handleSelectAstro = (e) => {
+		setAstro(e.target.value);
 	};
 
 	const astroData = {

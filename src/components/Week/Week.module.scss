@@ -1,5 +1,16 @@
 @import '../../assets/styles/variables';
 
-ul li {
+.resultList {
+	font-size: rem(16px);
 	list-style: none;
+	text-align: left;
+	li {
+		margin-bottom: rem(5px);
+	}
+	span {
+		margin-right: rem(10px);
+	}
+	@media (max-width: 768px) {
+		padding: 0;
+	}
 }

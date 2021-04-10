@@ -14,7 +14,6 @@ const Header = ({ items }) => {
 	const handleClick = () => setClick(!click);
 	const closeMobileMenu = () => setClick(false);
 
-	console.log({ isMobile });
 	return (
 		<div className={styles.header}>
 			<div className={styles.imgWrapper}>

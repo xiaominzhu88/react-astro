@@ -5,7 +5,13 @@ import axios from 'axios';
 import CirclePulse from '../Animations/CirclePulse/CirclePulse';
 import Separator from '../Separator/Separator';
 
-const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
+const Daily = ({
+	handleSelectAstro,
+	astro,
+	astroOptions,
+	className,
+	getData,
+}) => {
 	const [dailyData, setDailyData] = useState('');
 	const [today, setToday] = useState('');
 
@@ -31,49 +37,55 @@ const Daily = ({ handleSelectAstro, astro, astroOptions, className }) => {
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
-			<select
-				onChange={(e) => handleSelectAstro(e)}
-				className={classNames(className, 'select')}
-			>
-				select astro
-				<option disabled={astro && true}>select astro</option>
-				{astroOptions.map((item, i) => (
-					<option key={`${i}_${item}`}>{item}</option>
-				))}
-			</select>
-			<br />
-			<br />
-			{!dailyData ? (
-				<div className={classNames(styles.circlePulse, 'circlePulse')}>
-					<CirclePulse />
-				</div>
-			) : (
-				<>
-					<Separator />
-					<br />
-					<img src={dailyData.Icon} alt="daily" />
-					<ul className={styles.resultList}>
-						<br />
-						<br />
-						<li>
-							🗓 <span>Today:</span> {today}
-						</li>
-						<br />
+			<form onSubmit={getData}>
+				<select
+					onChange={(e) => handleSelectAstro(e)}
+					className={classNames(className, 'select')}
+				>
+					select astro
+					<option selected="selected" disabled={astro && true}>
+						select astro
+					</option>
+					{astroOptions.map((item, i) => (
+						<option key={`${i}_${item}`}>{item}</option>
+					))}
+				</select>
+				<br />
+				<br />
+				{!dailyData ? (
+					<div className={classNames(styles.circlePulse, 'circlePulse')}>
+						<CirclePulse />
+					</div>
+				) : (
+					<>
+						<Separator />
+						<p>
+							You are searching for <b>{astro}</b>
+						</p>
+						<img src={dailyData.Icon} alt="daily" />
+						<ul className={styles.resultList}>
+							<br />
+							<br />
+							<li>
+								🗓 <span>Today:</span> {today}
+							</li>
+							<br />
 
-						<li>
-							☘️ <span>Health:</span> {dailyData['Health']}
-						</li>
-						<br />
-						<li>
-							❤️ <span>Love:</span> {dailyData['Love']}
-						</li>
-						<br />
-						<li>
-							📂 <span>Career:</span> {dailyData['Career']}
-						</li>
-					</ul>
-				</>
-			)}
+							<li>
+								☘️ <span>Health:</span> {dailyData['Health']}
+							</li>
+							<br />
+							<li>
+								❤️ <span>Love:</span> {dailyData['Love']}
+							</li>
+							<br />
+							<li>
+								📂 <span>Career:</span> {dailyData['Career']}
+							</li>
+						</ul>
+					</>
+				)}
+			</form>
 		</div>
 	);
 };

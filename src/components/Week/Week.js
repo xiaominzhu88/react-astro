@@ -3,10 +3,18 @@ import classNames from 'classnames';
 import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Spinner from '../Animations/Spinner/Spinner';
+import styles from './Week.module.scss';
 
-const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
+const Week = ({
+	handleSelectAstro,
+	astro,
+	astroOptions,
+	className,
+	getData,
+}) => {
 	const [weekData, setWeekData] = useState('');
 	const [week, setWeek] = useState('');
+
 	useEffect(() => {
 		const options = {
 			method: 'GET',
@@ -29,41 +37,49 @@ const Week = ({ handleSelectAstro, astro, astroOptions, className }) => {
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
-			<select
-				onChange={(e) => handleSelectAstro(e)}
-				className={classNames(className, 'select')}
-			>
-				select astro
-				<option disabled={astro && true}>select astro</option>
-				{astroOptions.map((item, i) => (
-					<option key={`${i}_${item}`}>{item}</option>
-				))}
-			</select>
-			<br />
-			<br />
-			{!weekData ? (
-				<Spinner />
-			) : (
-				<>
-					<Separator />
-					<br />
-					<img src={weekData.Icon} alt="month" />
-					<ul>
-						<br />
-						<li>
-							📆 <span>Week: </span>
-							{week}
-						</li>
+			<form onSubmit={getData}>
+				<select
+					onChange={(e) => handleSelectAstro(e)}
+					className={classNames(className, 'select')}
+				>
+					select astro
+					<option selected="selected" disabled={astro && true}>
+						select astro
+					</option>
+					{astroOptions.map((item, i) => (
+						<option key={`${i}_${item}`}>{item}</option>
+					))}
+				</select>
+				<br />
+				<br />
+				{!weekData ? (
+					<Spinner />
+				) : (
+					<>
+						<Separator />
 
-						<br />
-						<li>
-							{' '}
-							📔 <span>This Week: </span>
-							{weekData['This Week']}
-						</li>
-					</ul>
-				</>
-			)}
+						<p>
+							You are searching for <b>{astro}</b>
+						</p>
+
+						<img src={weekData.Icon} alt="week" />
+						<ul className={styles.resultList}>
+							<br />
+							<li>
+								📆 <span>Week: </span>
+								{week}
+							</li>
+
+							<br />
+							<li>
+								{' '}
+								📔 <span>This Week: </span>
+								{weekData['This Week']}
+							</li>
+						</ul>
+					</>
+				)}
+			</form>
 		</div>
 	);
 };

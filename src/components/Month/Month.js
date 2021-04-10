@@ -3,10 +3,16 @@ import classNames from 'classnames';
 import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Heart from '../Animations/Heart/Heart';
+import styles from './Month.module.scss';
 
-const Month = ({ handleSelectAstro, astro, astroOptions, className }) => {
+const Month = ({
+	handleSelectAstro,
+	astro,
+	astroOptions,
+	className,
+	getData,
+}) => {
 	const [monthData, setMonthData] = useState('');
-
 	useEffect(() => {
 		const options = {
 			method: 'GET',
@@ -28,34 +34,48 @@ const Month = ({ handleSelectAstro, astro, astroOptions, className }) => {
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
-			<select
-				onChange={(e) => handleSelectAstro(e)}
-				className={classNames(className, 'select')}
-			>
-				select astro
-				<option disabled={astro && true}>select astro</option>
-				{astroOptions.map((item, i) => (
-					<option key={`${i}_${item}`}>{item}</option>
-				))}
-			</select>
-			<br />
-			<br />
-			{!monthData ? (
-				<Heart />
-			) : (
-				<>
-					<Separator />
-					<br />
-					<img src={monthData.Icon} alt="month" />
-					<ul>
-						<li>Best Days: {monthData['Best Days']}</li>
-						<br />
-						<li>{monthData['This Month']}</li>
-						<br />
-						<li>Worst Days: {monthData['Worst Days']}</li>
-					</ul>
-				</>
-			)}
+			<form onSubmit={getData}>
+				<select
+					onChange={(e) => handleSelectAstro(e)}
+					className={classNames(className, 'select')}
+				>
+					select astro
+					<option selected="selected" disabled={astro && true}>
+						select astro
+					</option>
+					{astroOptions.map((item, i) => (
+						<option key={`${i}_${item}`}>{item}</option>
+					))}
+				</select>
+				<br />
+				<br />
+				{!monthData ? (
+					<Heart />
+				) : (
+					<>
+						<Separator />
+						<p>
+							You are searching for <b>{astro}</b>
+						</p>
+
+						<img src={monthData.Icon} alt="month" />
+						<ul className={styles.resultList}>
+							<li>
+								🌟<span> Best Days:</span> {monthData['Best Days']}
+							</li>
+							<br />
+							<li>
+								🗓<span> This Month: </span>
+								{monthData['This Month']}
+							</li>
+							<br />
+							<li>
+								🎩<span> Worst Days:</span> {monthData['Worst Days']}
+							</li>
+						</ul>
+					</>
+				)}
+			</form>
 		</div>
 	);
 };

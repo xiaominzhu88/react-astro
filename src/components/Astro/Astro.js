@@ -19,7 +19,6 @@ const Astro = ({
 }) => {
 	const [astroErrorText, setAstroErrorText] = useState('');
 	const [dayErrorText, setDayErrorText] = useState('');
-
 	const [visible, setVisible] = useState(false);
 
 	const validate = () => {
@@ -46,7 +45,9 @@ const Astro = ({
 					)}
 				>
 					select astro
-					<option disabled={astro && true}>select astro</option>
+					<option selected="selected" disabled={astro && true}>
+						select astro
+					</option>
 					{astroOptions.map((item, i) => (
 						<option key={`${i}_${item}`}>{item}</option>
 					))}
