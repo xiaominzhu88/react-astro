@@ -66,40 +66,41 @@ const Daily = ({
 				</select>
 				<br />
 				<br />
-				{!dailyData ? (
-					<div className={classNames(styles.circlePulse, 'circlePulse')}>
-						<CirclePulse />
-					</div>
-				) : (
-					<>
-						<Separator />
-						<p>
-							You were looking for <b>{astro}</b>
-						</p>
-						<img src={dailyData.Icon} alt="daily" />
-						<ul className={styles.resultList}>
-							<br />
-							<br />
-							<li>
-								🗓 <span>Today:</span> {today}
-							</li>
-							<br />
-
-							<li>
-								☘️ <span>Health:</span> {dailyData['Health']}
-							</li>
-							<br />
-							<li>
-								❤️ <span>Love:</span> {dailyData['Love']}
-							</li>
-							<br />
-							<li>
-								📂 <span>Career:</span> {dailyData['Career']}
-							</li>
-						</ul>
-					</>
-				)}
 			</form>
+
+			{!dailyData ? (
+				<div className={classNames(styles.circlePulse, 'circlePulse')}>
+					<CirclePulse />
+				</div>
+			) : (
+				<>
+					<Separator />
+					<p>
+						You were looking for <b>{astro}</b>
+					</p>
+					<img src={dailyData.Icon} alt="daily" />
+					<ul className={styles.resultList}>
+						<br />
+						<br />
+						<li>
+							🗓 <span>Today:</span> {today}
+						</li>
+						<br />
+
+						<li>
+							☘️ <span>Health:</span> {dailyData['Health']}
+						</li>
+						<br />
+						<li>
+							❤️ <span>Love:</span> {dailyData['Love']}
+						</li>
+						<br />
+						<li>
+							📂 <span>Career:</span> {dailyData['Career']}
+						</li>
+					</ul>
+				</>
+			)}
 		</div>
 	);
 };

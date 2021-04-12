@@ -8,7 +8,9 @@
 	font-size: 18px;
 	list-style: none;
 	li {
-		margin-bottom: 5px;
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 10px;
 	}
 	span {
 		margin-right: 10px;

@@ -19,7 +19,7 @@ const Result = ({ loading, data }) => {
 						<span>⏳</span> Glückszeit: {data.lucky_time}{' '}
 					</li>
 					<li>
-						<span>♦️ </span>Farbe: {data.color}{' '}
+						<span>🐠 </span>Farbe: {data.color}{' '}
 					</li>
 					<li>
 						<span>🕔</span> Zeitraum: {data.date_range}{' '}

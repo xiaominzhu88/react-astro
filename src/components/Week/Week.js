@@ -66,34 +66,35 @@ const Week = ({
 				</select>
 				<br />
 				<br />
-				{!weekData ? (
-					<Spinner />
-				) : (
-					<>
-						<Separator />
-
-						<p>
-							You were looking for <b>{astro}</b>
-						</p>
-
-						<img src={weekData.Icon} alt="week" />
-						<ul className={styles.resultList}>
-							<br />
-							<li>
-								📆 <span>Week: </span>
-								{week}
-							</li>
-
-							<br />
-							<li>
-								{' '}
-								📔 <span>This Week: </span>
-								{weekData['This Week']}
-							</li>
-						</ul>
-					</>
-				)}
 			</form>
+
+			{!weekData ? (
+				<Spinner />
+			) : (
+				<>
+					<Separator />
+
+					<p>
+						You were looking for <b>{astro}</b>
+					</p>
+
+					<img src={weekData.Icon} alt="week" />
+					<ul className={styles.resultList}>
+						<br />
+						<li>
+							📆 <span>Week: </span>
+							{week}
+						</li>
+
+						<br />
+						<li>
+							{' '}
+							📔 <span>This Week: </span>
+							{weekData['This Week']}
+						</li>
+					</ul>
+				</>
+			)}
 		</div>
 	);
 };
