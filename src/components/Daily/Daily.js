@@ -4,6 +4,7 @@ import styles from './Daily.module.scss';
 import axios from 'axios';
 import CirclePulse from '../Animations/CirclePulse/CirclePulse';
 import Separator from '../Separator/Separator';
+import { useHistory } from 'react-router-dom';
 
 const Daily = ({
 	handleSelectAstro,
@@ -14,8 +15,18 @@ const Daily = ({
 }) => {
 	const [dailyData, setDailyData] = useState('');
 	const [today, setToday] = useState('');
+	const history = useHistory();
+	const [query, setQuery] = useState('');
 
 	useEffect(() => {
+		const params = new URLSearchParams();
+		if (query) {
+			params.append('search', query);
+		} else {
+			params.delete('search');
+		}
+		history.push({ search: params.toString() });
+
 		const options = {
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/today/long/${astro}`,
@@ -33,13 +44,16 @@ const Daily = ({
 			.catch(function (error) {
 				console.error(error.response.data);
 			});
-	}, [astro]);
+	}, [astro, query, history]);
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
 			<form onSubmit={getData}>
 				<select
-					onChange={(e) => handleSelectAstro(e)}
+					onChange={(e) => {
+						handleSelectAstro(e);
+						setQuery(e.target.value);
+					}}
 					className={classNames(className, 'select')}
 				>
 					select astro
@@ -60,7 +74,7 @@ const Daily = ({
 					<>
 						<Separator />
 						<p>
-							You are searching for <b>{astro}</b>
+							You were looking for <b>{astro}</b>
 						</p>
 						<img src={dailyData.Icon} alt="daily" />
 						<ul className={styles.resultList}>

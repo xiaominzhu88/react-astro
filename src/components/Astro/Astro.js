@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Result from '../Result/Result';
 import styles from './Astro.module.scss';
 import classNames from 'classnames';
 import Heart from '../Animations/Heart/Heart';
+import { useHistory } from 'react-router-dom';
 
 const Astro = ({
 	loading,
@@ -20,6 +21,22 @@ const Astro = ({
 	const [astroErrorText, setAstroErrorText] = useState('');
 	const [dayErrorText, setDayErrorText] = useState('');
 	const [visible, setVisible] = useState(false);
+	const [query, setQuery] = useState('');
+	const [dayQuery, setDayQuery] = useState('');
+	const history = useHistory();
+
+	useEffect(() => {
+		const params = new URLSearchParams();
+		if (query) {
+			params.append('search', query);
+			if (dayQuery) {
+				params.append('search', dayQuery);
+			}
+		} else {
+			params.delete('search');
+		}
+		history.push({ search: params.toString() });
+	}, [astro, query, dayQuery, history]);
 
 	const validate = () => {
 		if (!astro) {
@@ -37,7 +54,10 @@ const Astro = ({
 			<form onSubmit={getData}>
 				<select
 					required
-					onChange={(e) => handleSelectAstro(e)}
+					onChange={(e) => {
+						handleSelectAstro(e);
+						setQuery(e.target.value);
+					}}
 					className={classNames(
 						className,
 						{ [styles.selectButton]: hasSelectButton },
@@ -55,7 +75,10 @@ const Astro = ({
 				{visible && <p className={styles.errorText}>{astroErrorText}</p>}
 				<select
 					required
-					onChange={(e) => handleSelectDay(e)}
+					onChange={(e) => {
+						handleSelectDay(e);
+						setDayQuery(e.target.value);
+					}}
 					className={classNames(
 						className,
 						{ [styles.selectButton]: hasSelectButton },

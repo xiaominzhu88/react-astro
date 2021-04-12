@@ -4,6 +4,7 @@ import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Spinner from '../Animations/Spinner/Spinner';
 import styles from './Week.module.scss';
+import { useHistory } from 'react-router-dom';
 
 const Week = ({
 	handleSelectAstro,
@@ -14,8 +15,18 @@ const Week = ({
 }) => {
 	const [weekData, setWeekData] = useState('');
 	const [week, setWeek] = useState('');
+	const history = useHistory();
+	const [query, setQuery] = useState('');
 
 	useEffect(() => {
+		const params = new URLSearchParams();
+		if (query) {
+			params.append('search', query);
+		} else {
+			params.delete('search');
+		}
+		history.push({ search: params.toString() });
+
 		const options = {
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/week/short/${astro}`,
@@ -33,13 +44,16 @@ const Week = ({
 			.catch(function (error) {
 				console.error(error.response.data);
 			});
-	}, [astro]);
+	}, [astro, query, history]);
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
 			<form onSubmit={getData}>
 				<select
-					onChange={(e) => handleSelectAstro(e)}
+					onChange={(e) => {
+						handleSelectAstro(e);
+						setQuery(e.target.value);
+					}}
 					className={classNames(className, 'select')}
 				>
 					select astro
@@ -59,7 +73,7 @@ const Week = ({
 						<Separator />
 
 						<p>
-							You are searching for <b>{astro}</b>
+							You were looking for <b>{astro}</b>
 						</p>
 
 						<img src={weekData.Icon} alt="week" />

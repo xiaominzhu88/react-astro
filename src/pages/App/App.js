@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import Astro from '../../components/Astro/Astro';
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
@@ -15,8 +15,7 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	useRouteMatch,
-	useParams,
+	useHistory,
 } from 'react-router-dom';
 import classNames from 'classnames';
 
@@ -84,6 +83,7 @@ const App = () => {
 		astroOptions,
 		dayOptions,
 	};
+
 	return (
 		<Router>
 			<div className={styles.App}>
@@ -95,7 +95,7 @@ const App = () => {
 						<Route exact path={'/'}>
 							<Home className={classNames(styles.pageWrapper, 'page')} />
 						</Route>
-						<Route exact path={'/video'}>
+						<Route path={'/video'}>
 							<Video className={classNames(styles.pageWrapper, 'page')} />
 						</Route>
 
@@ -109,7 +109,7 @@ const App = () => {
 								hasSelectButton
 							/>
 						</Route>
-						<Route path={`/month`}>
+						<Route path={`/month`} component={Month}>
 							<Month
 								{...astroData}
 								className={classNames(styles.monthWrapper, 'page')}
