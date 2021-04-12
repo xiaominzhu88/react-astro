@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import React, { useState } from 'react';
 import Astro from '../../components/Astro/Astro';
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
