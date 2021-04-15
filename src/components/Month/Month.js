@@ -25,7 +25,8 @@ const Month = ({
 			params.delete('search');
 		}
 		history.push({ search: params.toString() });
-
+	});
+	useEffect(() => {
 		const options = {
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/month/short/${astro}`,
