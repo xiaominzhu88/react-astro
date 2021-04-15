@@ -29,6 +29,7 @@ const Week = ({
 	});
 	useEffect(() => {
 		const options = {
+			credentials: 'include',
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/week/short/${astro}`,
 			headers: {

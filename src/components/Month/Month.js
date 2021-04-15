@@ -28,6 +28,7 @@ const Month = ({
 	});
 	useEffect(() => {
 		const options = {
+			credentials: 'include',
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/month/short/${astro}`,
 			headers: {

@@ -29,6 +29,7 @@ const Daily = ({
 	});
 	useEffect(() => {
 		const options = {
+			credentials: 'include',
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/today/long/${astro}`,
 			headers: {
