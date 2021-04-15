@@ -44,7 +44,7 @@ const Week = ({
 				setWeek(response.data.Week);
 			})
 			.catch(function (error) {
-				console.error(error.response.data);
+				console.error(error);
 			});
 	}, [astro, query, history]);
 

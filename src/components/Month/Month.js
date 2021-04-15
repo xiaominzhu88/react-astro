@@ -42,7 +42,7 @@ const Month = ({
 				setMonthData(response.data[`${astro}`]);
 			})
 			.catch(function (error) {
-				console.error(error.response.data);
+				console.error(error);
 			});
 	}, [astro, query, history]);
 
