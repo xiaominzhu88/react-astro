@@ -36,7 +36,7 @@ const Astro = ({
 			params.delete('search');
 		}
 		history.push({ search: params.toString() });
-	}, [astro, query, dayQuery, history]);
+	}, []);
 
 	const validate = () => {
 		if (!astro) {
