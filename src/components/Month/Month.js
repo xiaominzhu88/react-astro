@@ -25,7 +25,8 @@ const Month = ({
 			params.delete('search');
 		}
 		history.push({ search: params.toString() });
-	});
+	}, []);
+
 	useEffect(() => {
 		const options = {
 			credentials: 'include',
@@ -44,7 +45,7 @@ const Month = ({
 			.catch(function (error) {
 				console.error(error);
 			});
-	}, [astro, query, history]);
+	}, [astro]);
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>

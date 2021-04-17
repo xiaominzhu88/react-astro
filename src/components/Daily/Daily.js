@@ -26,7 +26,8 @@ const Daily = ({
 			params.delete('search');
 		}
 		history.push({ search: params.toString() });
-	});
+	}, []);
+
 	useEffect(() => {
 		const options = {
 			credentials: 'include',
@@ -46,7 +47,7 @@ const Daily = ({
 			.catch(function (error) {
 				console.error(error);
 			});
-	}, [astro, query, history]);
+	}, [astro]);
 
 	return (
 		<div className={classNames(className, 'dataWrapper')}>
