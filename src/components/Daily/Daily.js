@@ -26,7 +26,7 @@ const Daily = ({
 			params.delete('search');
 		}
 		history.push({ search: params.toString() });
-	}, []);
+	}, [history, query]);
 
 	useEffect(() => {
 		const options = {
