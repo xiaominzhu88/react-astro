@@ -33,8 +33,10 @@ const Month = ({
 			method: 'GET',
 			url: `https://devbrewer-horoscope.p.rapidapi.com/month/short/${astro}`,
 			headers: {
+				'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
 				'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
 				'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
+				'Access-Control-Allow-Credentials': true,
 			},
 		};
 		axios
