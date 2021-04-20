@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Result from '../Result/Result';
 import styles from './Astro.module.scss';
 import classNames from 'classnames';
-import Heart from '../Animations/Heart/Heart';
+import Spinner from '../Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
 
 const Astro = ({
@@ -96,7 +96,7 @@ const Astro = ({
 					GO
 				</button>
 
-				{loading ? <Heart /> : <Result data={data} />}
+				{loading ? <Spinner /> : <Result data={data} />}
 			</form>
 		</div>
 	);
