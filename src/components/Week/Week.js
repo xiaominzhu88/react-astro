@@ -62,8 +62,7 @@ const Week = ({
 					}}
 					className={classNames(className, 'select')}
 				>
-					select astro
-					<option selected="selected" disabled={astro && true}>
+					<option default disabled={astro && true}>
 						select astro
 					</option>
 					{astroOptions.map((item, i) => (

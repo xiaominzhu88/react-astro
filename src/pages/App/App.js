@@ -22,6 +22,7 @@ const App = () => {
 
 	const items = ['astro', 'month', 'week', 'daily', 'about', 'others'];
 	const astroOptions = [
+		`${astro}`,
 		'Aries',
 		'Taurus',
 		'Gemini',
@@ -67,6 +68,7 @@ const App = () => {
 		setAstro(e.target.value);
 	};
 
+	// setting props
 	const astroData = {
 		loading,
 		handleSelectDay,
@@ -104,7 +106,7 @@ const App = () => {
 								hasSelectButton
 							/>
 						</Route>
-						<Route path={`/month`} component={Month}>
+						<Route path={`/month`}>
 							<Month
 								{...astroData}
 								className={classNames(styles.monthWrapper, 'page')}

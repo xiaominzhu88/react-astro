@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 const MenuItem = ({ link, name, className }) => {
 	const location = useLocation();
 	const currentName = location.pathname.toString().substring(1);
-
 	return (
 		<div
 			className={classNames(

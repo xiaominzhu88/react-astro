@@ -25,6 +25,7 @@ const Astro = ({
 	const [dayQuery, setDayQuery] = useState('');
 	const history = useHistory();
 
+	// set search url params
 	useEffect(() => {
 		const params = new URLSearchParams();
 		if (query) {
@@ -64,8 +65,7 @@ const Astro = ({
 						'select',
 					)}
 				>
-					select astro
-					<option selected="selected" disabled={astro && true}>
+					<option default disabled={astro && true}>
 						select astro
 					</option>
 					{astroOptions.map((item, i) => (
