@@ -17,6 +17,7 @@ const Week = ({
 	const [week, setWeek] = useState('');
 	const history = useHistory();
 	const [query, setQuery] = useState('');
+	const [verb, setVerb] = useState('were');
 
 	useEffect(() => {
 		const params = new URLSearchParams();
@@ -59,6 +60,7 @@ const Week = ({
 					onChange={(e) => {
 						handleSelectAstro(e);
 						setQuery(e.target.value);
+						setVerb('are');
 					}}
 					className={classNames(className, 'select')}
 				>
@@ -80,7 +82,7 @@ const Week = ({
 					<Separator />
 
 					<p>
-						You were looking for <b>{astro}</b>
+						You {verb} looking for <b>{astro}</b>
 					</p>
 
 					<img src={weekData.Icon} alt="week" />

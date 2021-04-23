@@ -2,7 +2,13 @@
 
 .astroWrapper {
 	text-align: center;
-	padding: rem(20px);
+	padding-top: rem(20px);
+	padding-left: rem(20px);
+	padding-right: rem(20px);
+	padding-bottom: rem(100px);
+	@media (min-width: 768px) {
+		padding: rem(20px);
+	}
 }
 button {
 	outline: 0;
@@ -29,7 +35,7 @@ button {
 		background-color: $secondary-green;
 	}
 	@media (max-width: 768px) {
-		margin-top: 5px;
+		margin-top: rem(10px);
 	}
 }
 .selectButton {
