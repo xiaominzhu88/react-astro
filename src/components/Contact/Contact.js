@@ -11,15 +11,15 @@ const Contact = () => {
 	const contactItem = [
 		{
 			icon: <FontAwesomeIcon icon={faPhone} className={styles.icon} />,
-			content: '+4300000',
+			content: '+4300000000',
 		},
 		{
 			icon: <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />,
-			content: 'xxx@xxx',
+			content: 'demo@demo.com',
 		},
 		{
 			icon: <FontAwesomeIcon icon={faAddressBook} className={styles.icon} />,
-			content: 'adress',
+			content: 'Adresse',
 		},
 	];
 	return (
