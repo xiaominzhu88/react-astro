@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Daily.module.scss';
-import axios from 'axios';
 import CirclePulse from '../Animations/CirclePulse/CirclePulse';
 import Separator from '../Separator/Separator';
 import { useHistory } from 'react-router-dom';
+import { getDailyData } from '../../hooks/ApiRequest.js';
 
 const Daily = ({
 	handleSelectAstro,
@@ -30,24 +30,12 @@ const Daily = ({
 	}, [history, query]);
 
 	useEffect(() => {
-		const options = {
-			credentials: 'include',
-			method: 'GET',
-			url: `https://devbrewer-horoscope.p.rapidapi.com/today/long/${astro}`,
-			headers: {
-				'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
-				'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
-				'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
-				'Access-Control-Allow-Credentials': true,
-			},
-		};
-		axios
-			.request(options)
-			.then(function (response) {
+		getDailyData(astro)
+			.then((response) => {
 				setDailyData(response.data[`${astro}`]);
 				setToday(response.data.Date);
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.error(error);
 			});
 	}, [astro]);

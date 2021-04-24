@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Spinner from '../Animations/Spinner/Spinner';
 import styles from './Week.module.scss';
 import { useHistory } from 'react-router-dom';
+import { getWeekData } from '../../hooks/ApiRequest.js';
 
 const Week = ({
 	handleSelectAstro,
@@ -30,25 +30,12 @@ const Week = ({
 	}, [history, query]);
 
 	useEffect(() => {
-		const options = {
-			credentials: 'include',
-			method: 'GET',
-			url: `https://devbrewer-horoscope.p.rapidapi.com/week/short/${astro}`,
-
-			headers: {
-				'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
-				'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
-				'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
-				'Access-Control-Allow-Credentials': true,
-			},
-		};
-		axios
-			.request(options)
-			.then(function (response) {
+		getWeekData(astro)
+			.then((response) => {
 				setWeekData(response.data[`${astro}`]);
 				setWeek(response.data.Week);
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.error(error);
 			});
 	}, [astro]);

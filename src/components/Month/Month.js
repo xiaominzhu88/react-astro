@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import axios from 'axios';
 import Separator from '../Separator/Separator';
 import Heart from '../Animations/Heart/Heart';
 import styles from './Month.module.scss';
 import { useHistory } from 'react-router-dom';
+import { getMonthData } from '../../hooks/ApiRequest.js';
 
 const Month = ({
 	handleSelectAstro,
@@ -29,23 +29,11 @@ const Month = ({
 	}, [history, query]);
 
 	useEffect(() => {
-		const options = {
-			credentials: 'include',
-			method: 'GET',
-			url: `https://devbrewer-horoscope.p.rapidapi.com/month/short/${astro}`,
-			headers: {
-				'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
-				'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
-				'x-rapidapi-host': 'devbrewer-horoscope.p.rapidapi.com',
-				'Access-Control-Allow-Credentials': true,
-			},
-		};
-		axios
-			.request(options)
-			.then(function (response) {
+		getMonthData(astro)
+			.then((response) => {
 				setMonthData(response.data[`${astro}`]);
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				console.error(error);
 			});
 	}, [astro]);

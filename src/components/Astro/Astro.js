@@ -4,13 +4,11 @@ import styles from './Astro.module.scss';
 import classNames from 'classnames';
 import Spinner from '../Spinner/Spinner';
 import { useHistory } from 'react-router-dom';
+import { getAstroData } from '../../hooks/ApiRequest.js';
 
 const Astro = ({
-	loading,
 	handleSelectAstro,
 	handleSelectDay,
-	data,
-	getData,
 	day,
 	astro,
 	astroOptions,
@@ -24,6 +22,10 @@ const Astro = ({
 	const [query, setQuery] = useState('');
 	const [dayQuery, setDayQuery] = useState('');
 	const history = useHistory();
+
+	const [data, setData] = useState({});
+
+	const [loading, setLoading] = useState(true);
 
 	// set search url params
 	useEffect(() => {
@@ -39,6 +41,18 @@ const Astro = ({
 		history.push({ search: params.toString() });
 	}, [dayQuery, history, query]);
 
+	const getData = (e) => {
+		e.preventDefault();
+		getAstroData(astro, day)
+			.then(function (response) {
+				setData(response.data);
+				setLoading(false);
+			})
+			.catch(function (error) {
+				console.error(error);
+			});
+	};
+
 	const validate = () => {
 		if (!astro) {
 			setAstroErrorText('Please select one astro');
@@ -50,6 +64,7 @@ const Astro = ({
 			setVisible(false);
 		}
 	};
+
 	return (
 		<div className={classNames(className, styles.astroWrapper)}>
 			<form onSubmit={getData}>

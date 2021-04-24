@@ -10,15 +10,12 @@ import Home from '../../components/Home/Home';
 import About from '../../components/About/About';
 import Others from '../../components/Others/Others';
 import styles from './App.module.scss';
-import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import classNames from 'classnames';
 
 const App = () => {
-	const [data, setData] = useState({});
 	const [day, setDay] = useState('');
 	const [astro, setAstro] = useState('');
-	const [loading, setLoading] = useState(true);
 
 	const items = ['astro', 'month', 'week', 'daily', 'about', 'others'];
 	const astroOptions = [
@@ -38,29 +35,6 @@ const App = () => {
 	];
 	const dayOptions = ['Today', 'Tomorrow', 'Yesterday'];
 
-	const options = {
-		method: 'POST',
-		url: `https://aztro.sameerkumar.website/?sign=${astro}&day=${day}`,
-		headers: {
-			'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
-			'x-rapidapi-host': 'sameer-kumar-aztro-v1.p.rapidapi.com',
-		},
-	};
-
-	const getData = (e) => {
-		e.preventDefault();
-
-		axios
-			.request(options)
-			.then(function (response) {
-				setData(response.data);
-				setLoading(false);
-			})
-			.catch(function (error) {
-				console.error(error);
-			});
-	};
-
 	const handleSelectDay = (e) => {
 		setDay(e.target.value);
 	};
@@ -70,11 +44,8 @@ const App = () => {
 
 	// setting props
 	const astroData = {
-		loading,
 		handleSelectDay,
 		handleSelectAstro,
-		data,
-		getData,
 		day,
 		astro,
 		astroOptions,
