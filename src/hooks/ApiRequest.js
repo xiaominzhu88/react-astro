@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const baseUrl = 'https://devbrewer-horoscope.p.rapidapi.com';
 const getAstroData = (astro, day) => {
 	const options = {
 		method: 'POST',
@@ -16,7 +17,7 @@ const getMonthData = (astro) => {
 	const options = {
 		credentials: 'include',
 		method: 'GET',
-		url: `https://devbrewer-horoscope.p.rapidapi.com/month/short/${astro}`,
+		url: `${baseUrl}/month/short/${astro}`,
 		headers: {
 			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
 			'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
@@ -31,7 +32,7 @@ const getWeekData = (astro) => {
 	const options = {
 		credentials: 'include',
 		method: 'GET',
-		url: `https://devbrewer-horoscope.p.rapidapi.com/week/short/${astro}`,
+		url: `${baseUrl}/week/short/${astro}`,
 		headers: {
 			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
 			'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,
@@ -45,7 +46,7 @@ const getDailyData = (astro) => {
 	const options = {
 		credentials: 'include',
 		method: 'GET',
-		url: `https://devbrewer-horoscope.p.rapidapi.com/today/long/${astro}`,
+		url: `${baseUrl}/today/long/${astro}`,
 		headers: {
 			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,DELETE',
 			'x-rapidapi-key': `${process.env.REACT_APP_KEY}`,

@@ -30,9 +30,7 @@ const Month = ({
 
 	useEffect(() => {
 		getMonthData(astro)
-			.then((response) => {
-				setMonthData(response.data[`${astro}`]);
-			})
+			.then((response) => setMonthData(response.data[`${astro}`]))
 			.catch((error) => {
 				console.error(error);
 			});

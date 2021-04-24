@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './Result.module.scss';
 
-const Result = ({ loading, data }) => {
+const Result = ({ data }) => {
 	return (
-		// !loading && (
 		<div className={styles.result}>
 			<ul className={styles.resultList}>
 				<li>
@@ -32,7 +31,6 @@ const Result = ({ loading, data }) => {
 				</li>
 			</ul>
 		</div>
-		// )
 	);
 };
 
